@@ -1,8 +1,6 @@
-
 from torchvision.datasets import ImageFolder
 from torchvision import transforms 
 from torch.utils import data
-
 
 
 def loader(data_dir, mode, img_crop, img_size, data_name, batch_size, workers):

@@ -80,7 +80,10 @@ class FeatureResNet34(nn.Module):
         super(FeatureResNet34, self).__init__()
         self.gpu_ids = gpu_ids
         self.resnet = ResNet34(torchvision.models.resnet.BasicBlock, [3, 4, 6, 3], **kwargs)
-        self.resnet.load_state_dict(torch.utils.model_zoo.load_url(torchvision.models.resnet.model_urls['resnet34']))
+        state_dict = torch.hub.load_state_dict_from_url(
+            'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
+            progress=True
+        )
         for param in self.resnet.parameters():
             param.requires_grad = False
 

@@ -34,6 +34,8 @@ def main(args):
 def str2bool(v):
     return v.lower() in ('true')
 
+
+
 if __name__=='__main__':
     parser = argparse.ArgumentParser()
 
@@ -62,18 +64,21 @@ if __name__=='__main__':
     parser.add_argument('--G_conv_dim', type=int, default=64, help='number of first layer conv filters in G')
     parser.add_argument('--num_domains', type=int, default=3, help='number of domains labels/classes in the dataset')
     parser.add_argument('--num_G_Resblocks', type=int, default=6, help='number of Res blocks in G backbone' )
-    parser.add_argument('--G_learning_rate', type=float, default=0.0001, help='Generator learning rate')
+    #parser.add_argument('--G_learning_rate', type=float, default=0.0001, help='Generator learning rate')
+    parser.add_argument('--G_learning_rate', type=float, default=0.0005, help='Generator learning rate')
     #discriminator
     parser.add_argument('--D_conv_dim', type=int, default=64, help='number of first layer conv filters in D')
     parser.add_argument('--num_D_Convblocks', type=int, default=6, help='number of strided convs in D' )
-    parser.add_argument('--D_learning_rate', type=float, default=0.0001, help='learning rate for D')
+    #parser.add_argument('--D_learning_rate', type=float, default=0.0001, help='learning rate for D')
+    parser.add_argument('--D_learning_rate', type=float, default=0.0005, help='learning rate for D')
     #optimizer
     parser.add_argument('--beta_1', type=int, default=0.5, help='adam optimizer beta1')
     parser.add_argument('--beta_2', type=int, default=0.999, help='adam optimizer beta2')
     
     #training
     parser.add_argument('--resume_training', type=int, default=None, help='resume training from previous saved model/step')
-    parser.add_argument('--train_iters', type=int, default=200000, help='total number of training iterations')
+    #parser.add_argument('--train_iters', type=int, default=200000, help='total number of training iterations')
+    parser.add_argument('--train_iters', type=int, default=5000, help='total number of training iterations')
     parser.add_argument('--d_g_steps', type=int, default=5, help='number of D updates for each G update')
     parser.add_argument('--g_lr', type=float, default=0.0001, help='learning rate for G')
     parser.add_argument('--d_lr', type=float, default=0.0001, help='learning rate for D')
@@ -93,7 +98,8 @@ if __name__=='__main__':
     parser.add_argument('--use_tensorboard', type=str2bool, default=False, help='update tensorboard')
 
     #test model
-    parser.add_argument('--test_iters', type=int, default=200000, help='test model at step 200000')
+    #parser.add_argument('--test_iters', type=int, default=200000, help='test model at step 200000')
+    parser.add_argument('--test_iters', type=int, default=10000, help='test model at step 10000')
     parser.add_argument('--which_domain', type=int, default=0, help='choose target domain for test set between "0" and "total number of domains"')
     
     
